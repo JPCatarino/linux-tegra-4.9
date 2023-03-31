@@ -1,9 +1,9 @@
 ifeq ($(KERNEL_OVERLAYS),)
 KERNEL_OVERLAYS :=
-KERNEL_OVERLAYS += $(CURDIR)/../nvidia
-KERNEL_OVERLAYS += $(CURDIR)/../nvgpu
-KERNEL_OVERLAYS += $(CURDIR)/../nvgpu-next
-KERNEL_OVERLAYS += $(CURDIR)/../nvidia-t23x
+KERNEL_OVERLAYS += $(CURDIR)/nvidia
+KERNEL_OVERLAYS += $(CURDIR)/nvidia/nvgpu
+KERNEL_OVERLAYS += $(CURDIR)/nvidia/nvgpu-next
+KERNEL_OVERLAYS += $(CURDIR)/nvidia/nvidia-t23x
 else
 override KERNEL_OVERLAYS := $(subst :, ,$(KERNEL_OVERLAYS))
 endif
