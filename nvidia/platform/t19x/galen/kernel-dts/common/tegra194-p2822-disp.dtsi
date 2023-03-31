@@ -68,8 +68,8 @@
 	nvidia,dc-flags = <TEGRA_DC_FLAG_ENABLED>;
 	vdd-dp-pwr-supply = <&p2888_spmic_sd0>;
 	avdd-dp-pll-supply = <&p2888_spmic_sd1>;
-	vdd-edp-sec-mode-supply = <&battery_reg>;
-	vdd-dp-pad-supply = <&battery_reg>;
+	//vdd-edp-sec-mode-supply = <&battery_reg>;			//removed for X2xx board from auvidea(fd)
+	//vdd-dp-pad-supply = <&battery_reg>;
 	vdd_hdmi_5v0-supply = <&p2822_vdd_hdmi_5v0>;
 };
 
@@ -86,7 +86,7 @@
 
 &sor1 {
 	status = "okay";
-	nvidia,active-panel = <&sor1_dp_display>;
+	nvidia,active-panel = <&sor1_hdmi_display>;			//changed to sor1_hdmi_display for X2xx board from auvidea(fd)	
 };
 
 &sor1_dp_display {
@@ -98,6 +98,14 @@
 	status = "okay";
 	nvidia,active-panel = <&sor2_hdmi_display>;
 };
+
+&sor2_hdmi_display {							//added for X2xx board from auvidea(fd)	
+	status = "okay";
+	disp-default-out {
+		nvidia,out-flags = <TEGRA_DC_OUT_HOTPLUG_LOW>;
+	};
+};
+
 
 &sor2_hdmi_display {
 	status = "okay";

@@ -1,14 +1,9 @@
-
-VERSION = 4
-PATCHLEVEL = 9
-SUBLEVEL = 253
-EXTRAVERSION =
-NAME = Roaring Lionus
-
 ifeq ($(KERNEL_OVERLAYS),)
 KERNEL_OVERLAYS :=
-KERNEL_OVERLAYS += $(CURDIR)/nvidia
-KERNEL_OVERLAYS += $(CURDIR)/nvidia/nvgpu
+KERNEL_OVERLAYS += $(CURDIR)/../nvidia
+KERNEL_OVERLAYS += $(CURDIR)/../nvgpu
+KERNEL_OVERLAYS += $(CURDIR)/../nvgpu-next
+KERNEL_OVERLAYS += $(CURDIR)/../nvidia-t23x
 else
 override KERNEL_OVERLAYS := $(subst :, ,$(KERNEL_OVERLAYS))
 endif
@@ -21,6 +16,12 @@ define set_srctree_overlay
   export srctree.$(overlay_name)
 endef
 $(foreach overlay,$(KERNEL_OVERLAYS),$(eval $(value set_srctree_overlay)))
+
+VERSION = 4
+PATCHLEVEL = 9
+SUBLEVEL = 253
+EXTRAVERSION =
+NAME = Roaring Lionus
 
 # *DOCUMENTATION*
 # To see a list of typical targets execute "make help"

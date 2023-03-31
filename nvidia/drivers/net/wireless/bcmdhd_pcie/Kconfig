@@ -62,5 +62,5 @@ config DHD_SET_RANDOM_MAC_VAL
 	hex "Vendor OUI"
 	depends on BCMDHD
 	default 0x001A11
-	---help---
+ 	---help---
 	  Set vendor OUI for SoftAP
