@@ -1,6 +1,6 @@
 GCOV_PROFILE := y
-ccflags-y += -I$(srctree.nvidia)/drivers/video/tegra/host
-ccflags-y += -I$(srctree.nvidia)/include
+ccflags-y += -Invidia/drivers/video/tegra/host
+ccflags-y += -Invidia/include
 ccflags-y += -Idrivers/video/tegra/host
 ccflags-y += -Idrivers/devfreq
 ccflags-y += -Wno-multichar
@@ -63,7 +63,7 @@ ifdef CONFIG_EVENTLIB
 $(obj)/bus_client.o: $(obj)/nvhost_events_json.h
 
 $(obj)/nvhost_events_json.h: $(src)/nvhost_events.json
-	$(info srctree="$($(srctree.nvidia))")
+	$(info srctree="$(srctree.nvidia)")
 	$(info obj="$(obj)")
 	xxd -i $< $@
 	sed -i 's/\(.*\) \(.*\)nvhost_events_json\(.*\)/\1 nvhost_events_json\3/g' $@
