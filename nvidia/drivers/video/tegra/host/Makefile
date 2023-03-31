@@ -60,9 +60,9 @@ endif
 
 ifdef CONFIG_EVENTLIB
 
-$(obj)/bus_client.o: $(srctree.nvidia)/nvhost_events_json.h
+$(obj)/bus_client.o: $(srctree.nvidia)/$(obj)/nvhost_events_json.h
 
-$(srctree.nvidia)/nvhost_events_json.h: $(srctree.nvidia)/nvhost_events.json
+$(srctree.nvidia)/$(obj)/nvhost_events_json.h: $(srctree.nvidia)/$(obj)/nvhost_events.json
 	$(info srctree="$(srctree.nvidia)")
 	$(info obj="$(obj)")
 	xxd -i $< $@
