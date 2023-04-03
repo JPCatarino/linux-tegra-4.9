@@ -475,8 +475,8 @@ _KERNEL_LAST = $(lastword $(subst /, ,$(realpath $(srctree))))
 # obj-y += ../../../nv-hidden-repo/drivers/foo/bar.o
 # or:
 # obj-y += bar.o
-tegra-base-kernel-path = $(call _TEGRA_REL_PATH)/$(call _KERNEL_LAST)
-tegra-path = $(if  $(wildcard $(srctree)/../$(1)),$(call _TEGRA_REL_PATH)/$(1)/$(2),$(call tegra-base-kernel-path)/$(2))
+tegra-base-kernel-path = $(call _TEGRA_REL_PATH)
+tegra-path = $(if  $(wildcard $(srctree)/nvidia/$(1)),$(call _TEGRA_REL_PATH)/$(1)/$(2),$(call tegra-base-kernel-path)/$(2))
 
 ifneq ($(NV_BUILD_KERNEL_DTS_ROOT),)
 tegra-dtstree = $(NV_BUILD_KERNEL_DTS_ROOT)
@@ -484,7 +484,7 @@ else
 tegra-dtstree = $(srctree)/nvidia
 endif
 
-tegra-root-dtstree = $(subst ^$(realpath $(tegra-dtstree)/../..)/,,^$(realpath $(srctree)/arch/arm64/boot/dts))
+tegra-root-dtstree = $(subst ^$(realpath $(tegra-dtstree)/..)/,,^$(realpath $(srctree)/arch/arm64/boot/dts))
 tegra-rel-dtstree = $(subst $(the-space),/,$(patsubst %,..,$(subst /, ,$(tegra-root-dtstree))))
 # delete partially updated (i.e. corrupted) files on error
 .DELETE_ON_ERROR:
